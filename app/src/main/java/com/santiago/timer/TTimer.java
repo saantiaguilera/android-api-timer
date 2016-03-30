@@ -16,22 +16,22 @@ public class TTimer extends TLooper {
 		this.targetTimeMilis = targetTimeMilis;
 	}
 	
-	public void setCompletionListener (TimerCompletionListener completionListener){
+	public void setCompletionListener (TimerCompletionListener completionListener) {
 		this.completionListener = completionListener;
 	}
 	
-	public void setRefreshListener (TimerRefreshListener refreshListener){
+	public void setRefreshListener (TimerRefreshListener refreshListener) {
 		this.refreshListener = refreshListener;
 	}
 	
-	public void reset(){
+	public void reset() {
 		timeMilis = 0;
 		start();
 	}
 	
 	@Override
 	protected void run() {
-		if(targetTimeMilis!=0 && timeMilis>=targetTimeMilis){
+		if(targetTimeMilis!=0 && timeMilis>=targetTimeMilis) {
 			stop();
 			onTimerCompleted();
 		} else {
@@ -41,26 +41,22 @@ public class TTimer extends TLooper {
 		}
 	}
 	
-	protected void onRefresh(){
+	protected void onRefresh() {
 		if(refreshListener!=null)
 			refreshListener.onTimerRefresh(timeMilis);
 	}
 	
-	protected void onTimerCompleted(){
+	protected void onTimerCompleted() {
 		if(completionListener!=null)
 			completionListener.onTimerCompletion();
 	}
 	
-	public interface TimerCompletionListener{
-		
+	public interface TimerCompletionListener {
 		void onTimerCompletion();
-		
 	}
 	
-	public interface TimerRefreshListener{
-		
+	public interface TimerRefreshListener {
 		void onTimerRefresh(int timeMilis);
-		
 	}
 	
 }

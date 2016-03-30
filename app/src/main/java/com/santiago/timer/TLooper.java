@@ -8,16 +8,14 @@ public class TLooper {
 	
 	private static final int MESSAGE_UPDATE_BAR = 20151105;
 	
-	private PreviandoLooperHandler handler = null;
+	private LooperHandler handler = null;
 	
 	private long loopTimeMilis = 200;
 	
 	private boolean running = false;
 	
-	public TLooper(){
-		
-		handler =new PreviandoLooperHandler(this);
-		
+	public TLooper() {
+		handler =new LooperHandler(this);
 	}
 	
 	public long getLoopTimeMilis(){
@@ -28,27 +26,25 @@ public class TLooper {
 		this.loopTimeMilis = refreshTimeMilis;
 	}
 	
-	public void start(){
+	public void start() {
 		running = true;
 		handler.sendEmptyMessage(MESSAGE_UPDATE_BAR);
 	}
 	
-	public void stop(){
+	public void stop() {
 		running = false;
 		handler.removeMessages(MESSAGE_UPDATE_BAR);
 	}
-	
-	
-	protected void run(){
+
+	protected void run() {
 		
 	}
 	
-	
-	private static class PreviandoLooperHandler extends Handler {
+	private static class LooperHandler extends Handler {
 		
 		private TLooper looper = null;
 		
-		public PreviandoLooperHandler(TLooper progressBar){
+		public LooperHandler(TLooper progressBar) {
 			super(Looper.getMainLooper());
 			this.looper = progressBar;
 		}
