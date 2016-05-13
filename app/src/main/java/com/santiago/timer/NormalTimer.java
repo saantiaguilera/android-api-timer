@@ -1,9 +1,11 @@
 package com.santiago.timer;
 
+import android.support.annotation.NonNull;
+
 public class NormalTimer extends BaseLooper {
 	
-	private TimerCompletionListener completionListener = null;
-	private TimerRefreshListener refreshListener = null;
+	private @NonNull TimerCompletionListener completionListener = null;
+	private @NonNull TimerRefreshListener refreshListener = null;
 	
 	private int targetTimeMilis = 1000;
 	private int timeMilis = 0;
@@ -29,11 +31,11 @@ public class NormalTimer extends BaseLooper {
 		}
 	}
 
-	public void setCompletionListener (TimerCompletionListener completionListener) {
+	public void setCompletionListener (@NonNull TimerCompletionListener completionListener) {
 		this.completionListener = completionListener;
 	}
 
-	public void setRefreshListener (TimerRefreshListener refreshListener) {
+	public void setRefreshListener (@NonNull TimerRefreshListener refreshListener) {
 		this.refreshListener = refreshListener;
 	}
 	

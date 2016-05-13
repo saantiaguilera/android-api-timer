@@ -3,6 +3,7 @@ package com.santiago.timer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.NonNull;
 
 public abstract class BaseLooper {
 	
@@ -42,7 +43,7 @@ public abstract class BaseLooper {
 		
 		private BaseLooper looper = null;
 		
-		public BaseLooperHandler(BaseLooper basicLooper) {
+		public BaseLooperHandler(@NonNull BaseLooper basicLooper) {
 			super(Looper.getMainLooper());
 			this.looper = basicLooper;
 		}
